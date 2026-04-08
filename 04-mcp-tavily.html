@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP 體驗：用 Tavily 讓 Kiro 上網搜尋</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge">工具體驗 1/3</span>
+        <h1>🔌 MCP 體驗：用 Tavily 讓 Kiro 上網搜尋</h1>
+        <p class="subtitle">幫 Kiro 裝一個「上網搜尋」的外掛，讓它能查到最新資料</p>
+
+        <!-- 為什麼需要 MCP -->
+        <div class="card">
+            <h2><span class="icon">🤔</span> Kiro 不是已經很聰明了嗎？</h2>
+            <p>Kiro 裡面的 AI 模型確實很強，但它有一個限制：<strong>沒辦法上網</strong>。它的知識停在訓練資料的截止日期，所以你問它「現在美金匯率多少」或「這個產品最近在亞馬遜賣多少錢」，它答不出來。</p>
+            <p style="margin-top: 12px;">要解決這個問題，我們可以幫 Kiro 裝一個叫 <strong>MCP</strong> 的外掛。MCP 的全名是 Model Context Protocol，你不用記這個名字，只要知道：它是一種讓 AI 工具「接外掛」的標準格式。裝了之後，Kiro 就能用外掛提供的功能，像是上網搜尋、讀取網頁內容等等。</p>
+        </div>
+
+        <!-- Tavily 是什麼 -->
+        <div class="card">
+            <h2><span class="icon">🔍</span> Tavily 是什麼？</h2>
+            <p>Tavily 是一個專門給 AI 用的搜尋工具。一般的搜尋引擎（像 Google）回傳的是一堆網頁連結，AI 還要自己去讀每個網頁。Tavily 會直接把搜尋結果整理好、重點內容抓出來，AI 拿到就能直接用。</p>
+            <p style="margin-top: 12px;">免費帳號每個月有 <strong>1,000 次</strong>搜尋額度，不用綁信用卡，拿來學習和日常使用很夠。</p>
+        </div>
+
+        <!-- 步驟一：申請 API Key -->
+        <div class="card">
+            <h2><span class="icon">🔑</span> 第一步：申請 Tavily API Key</h2>
+            <p>API Key 就是一組密碼，讓 Kiro 可以用你的帳號去呼叫 Tavily 的搜尋服務。</p>
+            <ol class="step-list">
+                <li>打開 <a href="https://app.tavily.com/home" target="_blank">app.tavily.com</a>，點 <strong>Sign Up</strong> 註冊帳號（可以用 Google 帳號直接登入）。</li>
+                <li>登入後會看到你的 API Key。在 <strong>OPTIONS</strong> 中，點左邊第二個圖示就能複製 API Key</li>
+                <li style="color: #d63031;"><strong style="color: #d63031;">API Key 是你的帳號密碼，不要分享給別人，也不要貼在公開的地方。</strong></li>
+            </ol>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/MGVJ5w8r/05-Tavily-MCP.png" alt="Tavily 後台，顯示 API Key 的位置">
+            </div>
+        </div>
+
+        <!-- 步驟二：在 Kiro 設定 MCP -->
+        <div class="card">
+            <h2><span class="icon">⚙️</span> 第二步：在 Kiro 裡面設定 MCP</h2>
+            <ol class="step-list">
+                <li>在電腦上新增一個空白資料夾（名字隨便取），對資料夾點<strong>滑鼠右鍵</strong>，選擇 <strong>Open with Kiro</strong>。</li>
+                <li>看到 Kiro 畫面左邊的導航欄，選擇<strong>倒數第二個圖示</strong>（Kiro 的 logo）。</li>
+                <li>點擊最下方的 <strong>MCP SERVERS</strong> 區域，再點右上角的 <strong>Open MCP Config</strong>。</li>
+                <li>Kiro 會打開一個設定檔，把裡面的內容換成下面這段：</li>
+            </ol>
+            <div class="code-block"><pre>{
+  "mcpServers": {
+    "tavily": {
+      "command": "npx",
+      "args": ["-y", "tavily-mcp@latest"],
+      "disabled": false,
+      "autoApprove": [
+        "tavily-search",
+        "tavily-extract",
+        "tavily_search",
+        "tavily_extract",
+        "tavily_research"
+      ],
+      "env": {
+        "TAVILY_API_KEY": "<code>貼上你的 API Key</code>"
+      }
+    }
+  }
+}</pre></div>
+            <ol class="step-list" start="5">
+                <li>把 <code>"貼上你的 API Key"</code> 換成你剛才複製的那串 <code>tvly-xxxxxxxxxx</code>，然後存檔（<strong>Ctrl + S</strong>）。</li>
+                <li>關閉Kiro IDE，然後重新開啟，確保設置有正常輸入。</li>
+                <li>如果顯示紅色或連不上，先確認 Node.js 有沒有裝好（第二篇有教），然後檢查 API Key 有沒有貼對。</li>
+            </ol>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/TP3fRF8H/06-MCP-Config.png" style="width: 100%;" alt="MCP SERVERS 顯示 tavily Connected，代表設定成功">
+                <p class="caption">看到 tavily Connected 加上綠色勾勾就代表成功了</p>
+            </div>
+        </div>
+
+        <!-- 步驟三：試用 -->
+        <div class="card">
+            <h2><span class="icon">🚀</span> 第三步：試試看</h2>
+            <p>設定好之後，直接在 Kiro 右邊的對話區跟 AI 講話，它就會自動用 Tavily 去搜尋。試試看這幾個問題：</p>
+            <ol class="step-list">
+                <li>輸入：<strong>幫我查一下 2026 年美國對中國商品的最新關稅政策</strong></li>
+                <li>輸入：<strong>「insulated water bottle」這個品類最近在美國市場有什麼新趨勢？</strong></li>
+                <li>輸入：<strong>幫我整理 TikTok Shop 美國站最近半年的重要政策變動</strong></li>
+            </ol>
+            <p style="margin-top: 12px;">你會看到 Kiro 在回答的過程中呼叫了 Tavily 的搜尋工具，回覆裡會包含最新的網路資料和來源連結。</p>
+        </div>
+
+        <!-- MCP 的意義 -->
+        <div class="card">
+            <h2><span class="icon">💡</span> 裝了 MCP 之後有什麼不同？</h2>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>沒有 MCP</th>
+                        <th>裝了 Tavily MCP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>查即時資訊</td>
+                        <td>不行，只能用訓練資料回答</td>
+                        <td>可以，直接搜尋最新網路資料</td>
+                    </tr>
+                    <tr>
+                        <td>查產品價格</td>
+                        <td>不行，會說「我無法上網」</td>
+                        <td>可以，幫你搜尋並整理結果</td>
+                    </tr>
+                    <tr>
+                        <td>查競品資訊</td>
+                        <td>只能給一般性建議</td>
+                        <td>可以搜尋到具體的市場資料</td>
+                    </tr>
+                    <tr>
+                        <td>查政策法規</td>
+                        <td>可能過時或不準確</td>
+                        <td>可以查到最新的政策變動</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 12px;">裝了 MCP 之後，AI 就不只能聊天，還能上網查資料，進一步擴展 AI 的能力邊界。</p>
+        </div>
+
+        <!-- 三大旗艦模型比較 -->
+        <div class="card">
+            <h2><span class="icon">📊</span> 2026 三大旗艦模型比較</h2>
+            <p>模型不是在發布之後停止學習，而是在訓練之後停止學習，這也是為什麼引入最新資訊對減少幻覺會有幫助。</p>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Claude Opus 4.6</th>
+                        <th>GPT-5.4</th>
+                        <th>Gemini 3.1 Pro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>開發商</td>
+                        <td>Anthropic</td>
+                        <td>OpenAI</td>
+                        <td>Google</td>
+                    </tr>
+                    <tr>
+                        <td>發布日期</td>
+                        <td>2026 年 2 月 5日</td>
+                        <td>2026 年 3 月 5日</td>
+                        <td>2026 年 2 月 19日</td>
+                    </tr>
+                    <tr>
+                        <td>知識截止</td>
+                        <td>2025 年 5 月</td>
+                        <td>2025 年 8 月</td>
+                        <td>2025 年 1 月</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <script src="page-map.js"></script>
+    <script src="lightbox.js"></script>
+</body>
+</html>

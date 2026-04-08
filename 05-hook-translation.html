@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hook 體驗：自動化你的工作流程</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge">工具體驗 2/3</span>
+        <h1>🪝 Hook 體驗：讓 Kiro 自動幫你做事</h1>
+        <p class="subtitle">設定好觸發條件，Kiro 就會在對的時機自動執行你交代的任務</p>
+
+        <!-- Hook 是什麼 -->
+        <div class="card">
+            <h2><span class="icon">🤔</span> Hook 是什麼？</h2>
+            <p>上一篇我們學會了用 MCP 幫 Kiro 裝外掛，但每次都要自己在對話區打字叫它做事。<br>有沒有辦法讓 Kiro <strong>自動</strong>在某個時間點幫你做事？</p>
+            <p style="margin-top: 12px;">這就是 <strong>Hook</strong> 的用途。Hook 讓你設定一個規則：「當 XX 事情發生，就自動做 YY 動作」。<br>設定好之後，你不用再手動下指令，Kiro 會自己判斷時機、自動執行。</p>
+        </div>
+
+        <!-- Hook 的啟動時機 -->
+        <div class="card">
+            <h2><span class="icon">⏰</span> Hook 可以在什麼時候啟動？</h2>
+            <p>Kiro 提供了 <strong>10 種觸發時機</strong>，涵蓋檔案操作、對話互動、任務執行等場景：</p>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>觸發時機</th>
+                        <th>什麼時候會啟動</th>
+                        <th>可以拿來做什麼</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="compare-highlight">
+                        <td><strong>檔案存檔</strong></td>
+                        <td>你按 Ctrl+S 存檔的時候</td>
+                        <td>自動檢查格式、更新相關檔案、產生文件</td>
+                    </tr>
+                    <tr>
+                        <td><strong>新增檔案</strong></td>
+                        <td>你在專案裡建立新檔案的時候</td>
+                        <td>自動加上固定的開頭模板、建立對應的測試檔</td>
+                    </tr>
+                    <tr>
+                        <td><strong>刪除檔案</strong></td>
+                        <td>你刪掉一個檔案的時候</td>
+                        <td>自動清理相關的引用、維護專案完整性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>送出對話</strong></td>
+                        <td>你在對話區按送出的時候</td>
+                        <td>自動補充額外的背景資訊給 AI 參考</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI 回覆完畢</strong></td>
+                        <td>Kiro 完成一輪回覆之後</td>
+                        <td>自動檢查 AI 產生的程式碼、執行編譯確認</td>
+                    </tr>
+                    <tr>
+                        <td><strong>工具執行前</strong></td>
+                        <td>AI 準備使用某個工具之前</td>
+                        <td>擋掉不該執行的操作、補充額外指示</td>
+                    </tr>
+                    <tr>
+                        <td><strong>工具執行後</strong></td>
+                        <td>AI 用完某個工具之後</td>
+                        <td>記錄操作紀錄、檢查工具的執行結果</td>
+                    </tr>
+                    <tr>
+                        <td><strong>任務開始前</strong></td>
+                        <td>Spec 任務準備開始執行的時候</td>
+                        <td>先跑環境準備、確認前置條件有沒有滿足</td>
+                    </tr>
+                    <tr>
+                        <td><strong>任務完成後</strong></td>
+                        <td>Spec 任務執行完畢的時候</td>
+                        <td>自動跑測試、產生文件、通知外部系統</td>
+                    </tr>
+                    <tr>
+                        <td><strong>手動觸發</strong></td>
+                        <td>你自己按按鈕啟動</td>
+                        <td>需要的時候才執行，像是程式碼檢查、產生文件</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 動手做：用「檔案存檔」觸發自動翻譯 -->
+        <div class="card">
+            <h2><span class="icon">🚀</span> 動手做：用「檔案存檔」觸發自動翻譯</h2>
+            <p>接下來我們用一個實際場景來體驗 Hook：存好中文商品文案，Kiro 自動翻譯成英文。</p>
+
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第一步：建立文案資料夾</strong></p>
+            <p>先建好放文案的資料夾，讓 Kiro 知道哪些檔案需要翻譯。</p>
+            <ol class="step-list">
+                <li>在 Kiro 左邊的檔案區，對資料夾空白處點<strong>右鍵 → New Folder</strong>，建立一個叫 <strong>copy</strong> 的資料夾。</li>
+                <li>在 <strong>copy</strong> 資料夾裡面，再建兩個子資料夾：<strong>zh</strong>（放中文文案）和 <strong>en</strong>（放英文翻譯）。</li>
+            </ol>
+            <p style="margin-top: 12px;">完成後的結構長這樣：</p>
+            <div class="code-block"><pre>你的專案資料夾/
+├── copy/
+│   ├── zh/    ← 你寫中文文案的地方
+│   └── en/    ← Kiro 自動翻譯後放這裡</pre></div>
+
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第二步：建立翻譯 Hook</strong></p>
+            <p>告訴 Kiro：「只要 copy/zh 裡的檔案被存檔，就自動翻譯成英文」。</p>
+            <ol class="step-list">
+                <li>在 Kiro 右邊的對話區，直接輸入以下內容：</li>
+            </ol>
+            <div class="code-block"><pre>幫我建立一個 Hook：
+- 當 copy/zh 資料夾裡的 .md 檔案被編輯存檔時觸發
+- 自動把該檔案的內容翻譯成英文
+- 翻譯結果存到 copy/en 資料夾，檔名保持一樣
+- 翻譯語氣要適合電商產品上架，自然通順
+- 如果 copy/en 裡已經有同名檔案，直接覆蓋更新</pre></div>
+            <ol class="step-list" start="2">
+                <li>Kiro 會自動幫你建立 Hook 設定檔。你會在左邊檔案區看到 <strong>.kiro/hooks/</strong> 資料夾下多了一個新檔案。</li>
+                <li>Kiro 可能會問你要不要確認設定內容，點 <strong>Accept</strong> 就好。</li>
+            </ol>
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第三步：寫一篇中文文案試試</strong></p>
+            <ol class="step-list">
+                <li>在 <strong>copy/zh</strong> 資料夾裡新增一個檔案，叫 <strong>product-01.md</strong>。</li>
+                <li>在裡面寫一段中文商品文案，例如：</li>
+            </ol>
+            <div class="code-block"><pre>商品名稱：不鏽鋼真空保溫杯 500ml
+
+產品特色：
+- 雙層真空隔熱，保溫效果長達 12 小時
+- 食品級 304 不鏽鋼內膽，安全無毒
+- 防漏杯蓋設計，放包包裡也不怕
+- 簡約外型，送禮自用都適合
+
+適用場景：辦公室、健身房、戶外旅行、日常通勤</pre></div>
+            <ol class="step-list" start="3">
+                <li>按 <strong>Ctrl + S</strong> 存檔。</li>
+                <li>等幾秒鐘，打開 <strong>copy/en</strong> 資料夾，你會看到自動出現一個 <strong>product-01.md</strong>，裡面就是翻譯好的英文版。</li>
+            </ol>
+        </div>
+
+        <!-- 看看翻譯結果 -->
+        <div class="card">
+            <h2><span class="icon">🔄</span> 翻譯結果會長什麼樣？</h2>
+            <p>Kiro 翻譯出來的英文會是適合電商上架的語氣，不是逐字直譯。大概像這樣：</p>
+            <div class="code-block"><pre>Product Name: Stainless Steel Vacuum Insulated Water Bottle 500ml
+
+Key Features:
+- Double-wall vacuum insulation keeps drinks hot for up to 12 hours
+- Made with food-grade 304 stainless steel, BPA-free and non-toxic
+- Leak-proof lid design, safe to carry in your bag
+- Sleek minimalist design, perfect for gifting or personal use
+
+Ideal For: Office, gym, outdoor travel, daily commute</pre></div>
+            <p style="margin-top: 12px;">每次你修改中文文案再存檔，英文版就會自動更新。不用再手動複製貼上了。</p>
+        </div>
+
+        <!-- Hook 的重點觀念 -->
+        <div class="card">
+            <h2><span class="icon">💡</span> Hook 的重點觀念</h2>
+            <p>翻譯只是 Hook 的其中一種用法。真正重要的是理解它的運作方式：</p>
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>觀念</th>
+                        <th>說明</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>事件驅動</td>
+                        <td>Hook 是「事件發生 → 自動執行」，不需要你手動下指令</td>
+                    </tr>
+                    <tr>
+                        <td>條件明確才會觸發</td>
+                        <td>你設定的條件完全符合時才會啟動，不會亂觸發</td>
+                    </tr>
+                    <tr>
+                        <td>可以指定檔案範圍</td>
+                        <td>例如只監聽 copy/zh/*.md，其他檔案存檔不會觸發</td>
+                    </tr>
+                    <tr>
+                        <td>兩種動作可選</td>
+                        <td>可以叫 AI 執行任務（Ask Kiro），也可以跑一段指令（Run Command）</td>
+                    </tr>
+                    <tr>
+                        <td>隨時可以開關</td>
+                        <td>在 Kiro 的 Hook 面板裡可以啟用、停用、編輯或刪除</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <script src="page-map.js"></script>
+    <script src="lightbox.js"></script>
+</body>
+</html>
