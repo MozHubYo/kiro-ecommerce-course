@@ -50,94 +50,28 @@
             </table>
         </div>
 
-        <!-- 動手做 -->
+        <!-- 現場體驗：請 Kiro 幫你建立 Steering -->
         <div class="card">
-            <h2><span class="icon">🚀</span> 動手做：建立「活動效益分析」Steering</h2>
-            <p>接下來我們用一個跨境電商的實際場景來體驗 Steering</p>
+            <h2><span class="icon">🚀</span> 現場體驗：讓 Kiro 每次回覆都附唐詩</h2>
+            <p>了解 Steering 的載入模式後，直接在 Kiro 的對話區試試看。<br>複製以下指令貼到聊天框，讓 Kiro 幫你建立一個 Steering：</p>
+            <div class="code-block"><pre>幫我建立一個 Steering：
+每次回答我的問題時，都要在回覆的最後附上一首唐詩，
+並且要跟回覆的內容有關聯</pre></div>
+            <p style="margin-top: 16px;">建好之後，隨便問 Kiro 一個問題試試看，例如「今天天氣怎麼樣」或「推薦一本書」，看看它會不會在最後附上一首唐詩。</p>
+        </div>
 
-            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第一步：建立 Steering 文件</strong></p>
-            <ol class="step-list">
-                <li>在 Kiro 右邊面板找到 <strong>Steering</strong> 區塊，點 <strong>+</strong> 按鈕。</li>
-                <li>選擇 <strong>Workspace</strong>（只在這個專案生效）。</li>
-                <li>檔名輸入 <strong>profit-analysis.md</strong>，按 Enter 建立。</li>
-            </ol>
-
-            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第二步：寫入分析規則</strong></p>
-            <p>把以下內容貼進 <strong>profit-analysis.md</strong>，然後存檔：</p>
-            <div class="code-block"><pre>---
-inclusion: always
----
-
-# Amazon 活動效益分析
-
-## 當賣家提供商品資訊時，按以下規則計算並回覆。
-
-## 需要的資訊
-如果賣家沒有提供以下資訊，主動詢問：
-- 商品售價（含幣別，例如 $29.99 或 €24.99）
-- 商品成本（同幣別，含採購+頭程運費）
-- 活動折扣（例如 20% off）
-- FBA 配送費（同幣別，不知道的話用售價的 18% 估算）
-- 預計可銷售的庫存數量
-- 活動費用（例如 PED 活動費 $245，沒有就填 0）
-
-所有計算使用賣家提供的幣別，不做匯率換算。
-
-## 計算公式
-1. 佣金 = 售價 × 15%
-2. 單件利潤（原價）= 售價 - 成本 - FBA 配送費 - 佣金
-3. 折扣價 = 售價 ×（1 - 折扣比例）
-4. 折扣後佣金 = 折扣價 × 15%
-5. 單件利潤（折扣）= 折扣價 - 成本 - FBA 配送費 - 折扣後佣金
-6. 預估總利潤（原價）= 單件利潤（原價）× 庫存數量
-7. 預估總利潤（折扣）= 單件利潤（折扣）× 庫存數量 - 活動費用
-8. 利潤保留率 = 預估總利潤（折扣）÷ 預估總利潤（原價）× 100%
-9. 損益平衡點 = 活動費用 ÷ 單件利潤（折扣）（無條件進位到整數）
-10. 目標利潤反推：如果賣家指定想賺多少錢，用公式反推需要賣幾件
-    需要銷售件數 =（目標利潤 + 活動費用）÷ 單件利潤（折扣）
-
-## 輸出格式
-用一個表格列出原價 vs 折扣價的關鍵數字對比（售價、佣金、FBA、成本、單件利潤）。
-然後用 2-3 句話總結：
-1. 每件少賺多少錢
-2. 損益平衡點：至少要賣幾件才能打平活動費用
-3. 明確建議：划算 / 普通 / 不划算，以及原因
-
-判斷標準：
-- 損益平衡點 &lt; 庫存的 30%：划算，建議參加
-- 損益平衡點在庫存的 30%-50%：普通，看庫存壓力決定
-- 損益平衡點 &gt; 庫存的 50%：不划算，建議調整折扣或放棄
-
-保持簡潔，不要輸出太多表格，賣家只需要看到重點。</pre></div>
-
-            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第三步：在對話區測試</strong></p>
-            <p>直接在對話區輸入以下資訊，Kiro 就會按照 Steering 裡定義的公式和格式，幫你算出完整的效益分析。</p>
-            <div class="code-block"><pre>我有一個商品想參加 PED 活動，幫我分析一下：
-- 售價：$29.99
-- 成本：$8.50（含頭程運費）
-- FBA 配送費：$5.39
-- 活動折扣：20% off
-- 目前庫存：200 件
-- 活動費用：$245</pre></div>
-
-            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第四步：試試調整參數</strong></p>
-            <p>看完結果後，你可以直接在對話裡繼續追問：</p>
-            <div class="code-block"><pre>如果折扣改成 15% off，結果會怎樣？</pre></div>
-            <p style="margin-top: 12px;">也可以反過來問，從目標利潤推算需要賣多少件：</p>
-            <div class="code-block"><pre>如果我參加這個活動，想賺到 $500，需要賣掉幾件？</pre></div>
-            <p style="margin-top: 12px;">或是一次比較多個方案：</p>
-            <div class="code-block"><pre>幫我比較三種方案：
-1. 折扣 15% off，活動費 $0（Coupon）
-2. 折扣 20% off，活動費 $245（PED）
-3. 折扣 25% off，活動費 $245（PED）
-哪個方案的利潤保留率最高？各要賣幾件才能打平？</pre></div>
-            <p style="margin-top: 12px;">因為 Steering 已經定義好計算公式，Kiro 每次都會用同樣的邏輯幫你算，不會漏掉任何費用項目。</p>
+        <!-- 挑戰題 -->
+        <div class="card">
+            <h2><span class="icon">🏆</span> 挑戰題：活動效益分析</h2>
+            <p>你是一個 Amazon 賣家，平台常常有促銷活動可以報名，但每次都要自己算：打折之後扣掉佣金、FBA 費用、活動費，到底還能賺多少？值不值得參加？</p>
+            <p style="margin-top: 12px;">每次都要重新算一遍很麻煩，而且有時候會漏算某個費用項目，導致判斷失準。你希望只要丟商品資訊進來，Kiro 就能用固定的公式幫你算好，每次都不會漏。</p>
+            <p style="margin-top: 12px;">試試看用 Steering 解決這個問題。</p>
         </div>
 
         <!-- 重點觀念 -->
         <div class="card">
             <h2><span class="icon">💡</span> Steering 的重點觀念</h2>
-            <p>活動效益分析只是 Steering 的其中一種用法。真正重要的是理解它的運作方式：</p>
+            <p>以上只是 Steering 的其中一種用法。真正重要的是理解它的運作方式：</p>
             <table class="compare-table">
                 <thead>
                     <tr>
