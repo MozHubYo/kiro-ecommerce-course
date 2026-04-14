@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>打開 Kiro，認識你的工作環境</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge">新手上路</span>
+        <h1>🖥️ 打開 Kiro，認識你的工作環境</h1>
+        <p class="subtitle">開一個資料夾、看懂三個區塊、動手試一次就上手</p>
+
+        <!-- 怎麼打開 Kiro -->
+        <div class="card">
+            <h2><span class="icon">📂</span> 怎麼打開 Kiro？</h2>
+            <p>在電腦上新建一個空白資料夾（名字隨便取），打開資料夾後在空白處點<strong>滑鼠右鍵</strong>。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/Y0Dnt5BP/08-Folder.png" alt="新建空白資料夾，右鍵點擊空白處">
+            </div>
+            <p style="margin-top: 12px;">如果右鍵選單裡沒有看到 Open with Kiro，點最下面的 <strong>Show more options</strong>。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/kXDYTgx3/09-more-options.png" alt="右鍵選單點擊 Show more options">
+            </div>
+            <p style="margin-top: 12px;">在展開的選單裡找到 <strong>Open with Kiro</strong>，點下去就會打開 Kiro。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/gk5SQbD6/10-Open-with-Kiro.png" alt="選擇 Open with Kiro 打開資料夾">
+            </div>
+        </div>
+
+        <!-- 截圖總覽 -->
+        <div class="card">
+            <h2><span class="icon">📸</span> 介面總覽</h2>
+            <p>打開 Kiro 之後，畫面長這樣。左邊放檔案，中間看內容，右邊跟 AI 講話。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/hGHsdPV4/04-Kiro-UI.png" alt="Kiro IDE 介面總覽，分為左中右三個區塊">
+            </div>
+        </div>
+
+        <!-- 三欄說明 -->
+        <div class="zone-grid">
+            <div class="zone-card">
+                <div class="zone-label">📁 左邊｜檔案區</div>
+                <p>你的檔案都在這裡。想找之前做過的東西，或看看 AI 幫你加了什麼新檔案，從左邊找就對了。</p>
+            </div>
+            <div class="zone-card">
+                <div class="zone-label">✏️ 中間｜工作區</div>
+                <p>AI 幫你寫好的東西會出現在這裡，你可以直接看結果，覺得哪裡不對也能自己改。</p>
+            </div>
+            <div class="zone-card">
+                <div class="zone-label">💬 右邊｜對話區</div>
+                <p>這裡就是你跟 AI 講話的地方，打中文告訴它你想幹嘛就好。我們課程中都用 <strong>Vibe</strong> 模式。</p>
+            </div>
+        </div>
+
+        <!-- 現場體驗：檔案區就是你的資料夾 -->
+        <div class="card">
+            <h2><span class="icon">🚀</span> 現場體驗：檔案區就是你的資料夾</h2>
+            <p>左邊的檔案區不是什麼特別的東西，它就是你電腦裡的資料夾。做兩個小試驗就知道了：</p>
+            <ol class="step-list">
+                <li>在桌面新建一個資料夾，叫 <strong>my-test</strong>。</li>
+                <li>打開資料夾，在空白處點<strong>滑鼠右鍵</strong>，選 <strong>Show more options</strong> → <strong>Open with Kiro</strong>。</li>
+            </ol>
+
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>試驗一：在 Kiro 裡新增檔案，去資料夾找</strong></p>
+            <ol class="step-list">
+                <li>在 Kiro 右邊的對話區輸入：<strong>幫我建一個 hello.txt，內容寫「你好」</strong></li>
+                <li>Kiro 會在左邊的檔案區產生一個 hello.txt。</li>
+                <li>回到桌面，打開 my-test 資料夾，雙擊 hello.txt — 裡面寫的就是「你好」。</li>
+            </ol>
+
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>試驗二：在資料夾裡改檔案，回 Kiro 看</strong></p>
+            <ol class="step-list">
+                <li>在剛才打開的 hello.txt 裡，把「你好」改成 <strong>hello</strong>，然後存檔關閉。</li>
+                <li>回到 Kiro，點一下左邊檔案區的 hello.txt。</li>
+                <li>看中間的工作區 — 內容已經從「你好」變成 hello 了。</li>
+            </ol>
+
+            <p style="margin-top: 12px;">兩邊是<strong>同一個東西</strong>，Kiro 只是用不同的介面顯示你的資料夾而已。</p>
+        </div>
+
+    </div>
+    <script src="page-map.js"></script>
+    <script src="lightbox.js"></script>
+</body>
+</html>

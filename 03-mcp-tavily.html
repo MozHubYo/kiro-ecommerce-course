@@ -19,30 +19,10 @@
             <p style="margin-top: 12px;">要解決這個問題，我們可以幫 Kiro 裝一個叫 <strong>MCP</strong> 的外掛。MCP 的全名是 Model Context Protocol，你不用記這個名字，只要知道：它是一種讓 AI 工具「接外掛」的標準格式。裝了之後，Kiro 就能用外掛提供的功能，像是上網搜尋、讀取網頁內容等等。</p>
         </div>
 
-        <!-- Tavily 是什麼 -->
+        <!-- 在 Kiro 設定 MCP -->
         <div class="card">
-            <h2><span class="icon">🔍</span> Tavily 是什麼？</h2>
-            <p>Tavily 是一個專門給 AI 用的搜尋工具。一般的搜尋引擎（像 Google）回傳的是一堆網頁連結，AI 還要自己去讀每個網頁。Tavily 會直接把搜尋結果整理好、重點內容抓出來，AI 拿到就能直接用。</p>
-            <p style="margin-top: 12px;">免費帳號每個月有 <strong>1,000 次</strong>搜尋額度，不用綁信用卡，拿來學習和日常使用很夠。</p>
-        </div>
-
-        <!-- 步驟一：申請 API Key -->
-        <div class="card">
-            <h2><span class="icon">🔑</span> 第一步：申請 Tavily API Key</h2>
-            <p>API Key 就是一組密碼，讓 Kiro 可以用你的帳號去呼叫 Tavily 的搜尋服務。</p>
-            <ol class="step-list">
-                <li>打開 <a href="https://app.tavily.com/home" target="_blank">app.tavily.com</a>，點 <strong>Sign Up</strong> 註冊帳號（可以用 Google 帳號直接登入）。</li>
-                <li>登入後會看到你的 API Key。在 <strong>OPTIONS</strong> 中，點左邊第二個圖示就能複製 API Key</li>
-                <li style="color: #d63031;"><strong style="color: #d63031;">API Key 是你的帳號密碼，不要分享給別人，也不要貼在公開的地方。</strong></li>
-            </ol>
-            <div class="screenshot">
-                <img src="https://i.postimg.cc/MGVJ5w8r/05-Tavily-MCP.png" alt="Tavily 後台，顯示 API Key 的位置">
-            </div>
-        </div>
-
-        <!-- 步驟二：在 Kiro 設定 MCP -->
-        <div class="card">
-            <h2><span class="icon">⚙️</span> 第二步：在 Kiro 裡面設定 MCP</h2>
+            <h2><span class="icon">⚙️</span> 在 Kiro 裡面設定 MCP</h2>
+            <p>第一篇我們已經申請好 Tavily API Key 了，現在把它接到 Kiro 裡面。</p>
             <ol class="step-list">
                 <li>在電腦上新增一個空白資料夾（名字隨便取），對資料夾點<strong>滑鼠右鍵</strong>，選擇 <strong>Open with Kiro</strong>。</li>
                 <li>看到 Kiro 畫面左邊的導航欄，選擇<strong>倒數第二個圖示</strong>（Kiro 的 logo）。</li>
@@ -69,9 +49,9 @@
   }
 }</pre></div>
             <ol class="step-list" start="5">
-                <li>把 <code>"貼上你的 API Key"</code> 換成你剛才複製的那串 <code>tvly-xxxxxxxxxx</code>，然後存檔（<strong>Ctrl + S</strong>）。</li>
-                <li>關閉Kiro IDE，然後重新開啟，確保設置有正常輸入。</li>
-                <li>如果顯示紅色或連不上，先確認 Node.js 有沒有裝好（第二篇有教），然後檢查 API Key 有沒有貼對。</li>
+                <li>把 <code>"貼上你的 API Key"</code> 換成你在第一篇複製的那串 <code>tvly-xxxxxxxxxx</code>，然後存檔（<strong>Ctrl + S</strong>）。</li>
+                <li>關閉 Kiro IDE，然後重新開啟，確保設置有正常輸入。</li>
+                <li>如果顯示紅色或連不上，先確認 Node.js 有沒有裝好，然後檢查 API Key 有沒有貼對。</li>
             </ol>
             <div class="screenshot">
                 <img src="https://i.postimg.cc/TP3fRF8H/06-MCP-Config.png" style="width: 100%;" alt="MCP SERVERS 顯示 tavily Connected，代表設定成功">
@@ -79,10 +59,10 @@
             </div>
         </div>
 
-        <!-- 步驟三：試用 -->
+        <!-- 試用 -->
         <div class="card">
-            <h2><span class="icon">🚀</span> 第三步：試試看</h2>
-            <p>設定好之後，直接在 Kiro 右邊的對話區跟 AI 講話，它就會自動用 Tavily 去搜尋。試試看這幾個問題：</p>
+            <h2><span class="icon">🚀</span> 試試看</h2>
+            <p>直接在 Kiro 右邊的對話區跟 AI 講話，它就會自動用 Tavily 去搜尋。試試看這幾個問題：</p>
             <ol class="step-list">
                 <li>輸入：<strong>幫我查一下 2026 年美國對中國商品的最新關稅政策</strong></li>
                 <li>輸入：<strong>「insulated water bottle」這個品類最近在美國市場有什麼新趨勢？</strong></li>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>環境設置：安裝所有需要的工具</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge">前置準備</span>
+        <h1>🛠️ 環境設置：安裝所有需要的工具</h1>
+        <p class="subtitle">照著做，十分鐘內把環境全部搞定</p>
+
+        <!-- 安裝 Kiro -->
+        <div class="card">
+            <h2><span class="icon">📥</span> 第一步：安裝 Kiro IDE</h2>
+            <p>前往 <a href="https://kiro.dev" target="_blank">kiro.dev</a> 官方網站，點擊 Download 按鈕，選擇你的作業系統版本下載安裝檔。</p>
+            <ol class="step-list">
+                <li>安裝過程中，把 <strong>Other 區塊的選項全部打勾</strong>，之後就能通過右鍵啟動 Kiro。</li>
+                <li>第一次開啟 Kiro，會要求你<strong>登入帳號</strong>。直接用你的 Google 帳號登入就可以了，最快最方便。</li>
+            </ol>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/D0MjzdfG/01-Add-Open-With-Kiro.png" alt="安裝 Kiro 時勾選右鍵選單選項">
+            </div>
+        </div>
+
+        <!-- 安裝 Node.js -->
+        <div class="card">
+            <h2><span class="icon">🟢</span> 第二步：安裝 Node.js</h2>
+            <p>前往 <a href="https://nodejs.org/zh-tw/download" target="_blank">nodejs.org</a>，點擊下方的安裝程式，下載後安裝即可。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/N0ZPYxMK/02-Node-JS.png" alt="Node.js 官網下載 LTS 版本">
+            </div>
+        </div>
+
+        <!-- 安裝 Python -->
+        <div class="card">
+            <h2><span class="icon">🐍</span> 第三步：安裝 Python</h2>
+            <p>前往 <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a>，點擊 <strong>Python 3.14.3</strong>，下載後安裝即可。</p>
+            <p style="margin-top: 12px;">下載時不要按大按鈕(Python install manager)，點下面有底線的 <strong>Python 3.14.3</strong> 安裝檔即可。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/JnJYhBDc/03-Python.png" alt="Python 安裝時勾選 Add to PATH">
+            </div>
+            <p style="margin-top: 12px;">安裝時記得把最下面的 <strong>Add python.exe to PATH</strong> 打勾，這樣 Kiro 才能找到 Python。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/Dy7YLczP/07-PATH.png" alt="Python 安裝時勾選 Add python.exe to PATH">
+            </div>
+        </div>
+
+        <!-- 申請 Tavily API Key -->
+        <div class="card">
+            <h2><span class="icon">🔑</span> 第四步：申請 Tavily API Key</h2>
+            <p>Tavily 是一個搜尋工具，裝好之後 Kiro 就能上網查最新資料。免費帳號每月有 <strong>1,000 次</strong>搜尋額度，不用綁信用卡。</p>
+            <ol class="step-list">
+                <li>打開 <a href="https://app.tavily.com/home" target="_blank">app.tavily.com</a>，點 <strong>Sign Up</strong> 註冊帳號（可以用 Google 帳號直接登入）。</li>
+                <li>登入後會看到你的 API Key。在 <strong>OPTIONS</strong> 中，點左邊第二個圖示就能複製 API Key。</li>
+                <li style="color: #d63031;"><strong style="color: #d63031;">API Key 是你的帳號密碼，不要分享給別人，也不要貼在公開的地方。</strong></li>
+            </ol>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/MGVJ5w8r/05-Tavily-MCP.png" alt="Tavily 後台，顯示 API Key 的位置">
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="page-map.js"></script>
+    <script src="lightbox.js"></script>
+</body>
+</html>

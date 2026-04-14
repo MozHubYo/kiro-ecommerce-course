@@ -1,15 +1,14 @@
 (function () {
   var pages = [
-    { href: '01-install-kiro-ide.html', label: '安裝 Kiro' },
-    { href: '02-install-nodejs-python.html', label: 'Node / Python' },
-    { href: '03-kiro-ide-overview.html', label: 'Kiro 介面' },
-    { href: '04-mcp-tavily.html', label: 'MCP' },
-    { href: '05-hook-translation.html', label: 'Hook' },
-    { href: '06-steering-profit-analysis.html', label: 'Steering' },
-    { href: '07-steering-vs-hook.html', label: '比較' },
-    { href: '08-yt-video-analysis.html', label: 'YT 分析' },
-    { href: '09-ai-workflow-trends.html', label: '趨勢' },
-    { href: '10-survey.html', label: '問卷' }
+    { href: '01-setup-all.html', label: '環境設置' },
+    { href: '02-kiro-ide-overview.html', label: 'Kiro 介面' },
+    { href: '03-mcp-tavily.html', label: 'MCP' },
+    { href: '04-hook-translation.html', label: 'Hook' },
+    { href: '05-steering-profit-analysis.html', label: 'Steering' },
+    { href: '06-steering-vs-hook.html', label: '比較' },
+    { href: '07-yt-video-analysis.html', label: 'YT 分析' },
+    { href: '08-ai-workflow-trends.html', label: '趨勢' },
+    { href: '09-survey.html', label: '問卷' }
   ];
 
   var currentFile = location.pathname.split('/').pop();
