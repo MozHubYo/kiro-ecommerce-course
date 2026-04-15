@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實戰：用 AI 自動操作瀏覽器</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge">綜合實戰</span>
+        <h1>🌐 實戰：用 AI 自動操作瀏覽器</h1>
+        <p class="subtitle">讓 AI 幫你開網頁、點按鈕、抓資料，把重複的瀏覽器操作變成自動化流程</p>
+
+        <!-- Playwright CLI 是什麼 -->
+        <div class="card">
+            <h2><span class="icon">🤔</span> Playwright CLI 是什麼？</h2>
+            <p><a href="https://github.com/microsoft/playwright-cli" target="_blank">Playwright CLI</a> 是微軟做的一個工具，裝上之後，AI 就能像人一樣操作瀏覽器：開網頁、填表單、截圖、抓資料。</p>
+            <p style="margin-top: 12px;">而且搭配 Playwright CLI 的 Skill，AI 就知道怎麼使用，不需要用戶記住指令。</p>
+        </div>
+
+        <!-- 安裝 Playwright CLI -->
+        <div class="card">
+            <h2><span class="icon">📦</span> 安裝 Playwright CLI</h2>
+            <p style="margin-top: 12px;">在 Kiro 的對話區貼上以下指令，讓 AI 幫你一次搞定：</p>
+            <div class="code-block"><pre>請幫我完成 Playwright CLI 的安裝：
+1. 全局安裝 Playwright CLI（npm install -g @playwright/cli@latest）
+2. 在當前專案執行 playwright-cli install --skills，安裝配套的 Skill
+3. 安裝完成後，告訴我版本號確認成功</pre></div>
+            <p style="margin-top: 12px;">安裝成功後，可以在左側面板的 <strong>AGENT STEERING & SKILLS</strong> 看到 playwright-cli 這個 Skill。</p>
+        </div>
+
+        <!-- Step 1：完成設置（登入） -->
+        <div class="card">
+            <h2><span class="icon">🔑</span> Step 1：完成設置（登入）</h2>
+            <p style="margin-top: 12px;">很多網站需要登入才能操作。加上 <strong>--persistent</strong> 參數，瀏覽器就會像你平常用 Chrome 一樣記住登入狀態，關掉再開都還在。</p>
+
+            <p style="margin-top: 16px;">在 Kiro 的對話區貼上：</p>
+            <div style="position: relative;">
+                <button onclick="copyStep1Prompt()" style="
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    background: #6c5ce7;
+                    color: #fff;
+                    border: none;
+                    padding: 6px 14px;
+                    border-radius: 6px;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    z-index: 1;
+                    transition: background 0.2s;
+                " onmouseover="this.style.background='#5a4bd1'"
+                    onmouseout="this.style.background='#6c5ce7'">複製</button>
+                <div class="code-block"><pre id="step1Prompt">用 Playwright CLI 打開瀏覽器，
+要加上 --headed（我要看到畫面）和 --persistent（保留登入狀態）這兩個參數，
+然後打開 https://www.amazon.com/。</pre></div>
+            </div>
+            <p style="margin-top: 12px;">瀏覽器會跳出來，你可以像平常一樣手動登入你的帳號。登入完成後，以後只要用同樣的指令開瀏覽器，登入狀態就會自動帶入，不需要額外操作。</p>
+        </div>
+
+        <!-- Step 2：跟著 AI 一步一步抓競品評論 -->
+        <div class="card">
+            <h2><span class="icon">🔍</span> Step 2：跟著 AI 一步一步抓競品評論</h2>
+            <p style="margin-top: 12px;">登入完成後，我們來實際操作一次，讓 AI 去 Amazon 抓一個產品的評論。</p>
+
+            <div style="margin: 20px 0;">
+                <label for="asinInput" style="display: block; font-weight: 500; margin-bottom: 8px;">貼上你想查的產品 ASIN</label>
+                <input type="text" id="asinInput" placeholder="B0D1XD1ZV3" style="
+                    width: 100%;
+                    padding: 10px 14px;
+                    border: 2px solid #dfe6e9;
+                    border-radius: 8px;
+                    font-family: 'Consolas', 'Monaco', monospace;
+                    font-size: 0.95rem;
+                    transition: border-color 0.2s;
+                    outline: none;
+                " onfocus="this.style.borderColor='#6c5ce7'" onblur="this.style.borderColor='#dfe6e9'">
+            </div>
+
+            <div style="position: relative;">
+                <button onclick="copyReviewPrompt()" style="
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    background: #6c5ce7;
+                    color: #fff;
+                    border: none;
+                    padding: 6px 14px;
+                    border-radius: 6px;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    z-index: 1;
+                    transition: background 0.2s;
+                " onmouseover="this.style.background='#5a4bd1'"
+                    onmouseout="this.style.background='#6c5ce7'">複製</button>
+                <div class="code-block">
+                    <pre id="reviewPromptOutput">請用目前開著的瀏覽器，幫我做以下操作：
+1. 打開這個 Amazon 產品頁面：https://www.amazon.com/dp/___
+2. 找到評論區，抓取最新的 5 則評論（評分、標題、內容、日期）
+3. 把結果整理成一份表格給我看</pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3：把操作變成可重複執行的腳本 -->
+        <div class="card">
+            <h2><span class="icon">🔧</span> Step 3：把操作變成可重複執行的腳本</h2>
+            <p>上面的操作是「一次性」的，如果每天都要做同樣的事，寫成腳本，以後一鍵執行。</p>
+
+            <p style="margin-top: 16px;">在 Kiro 的對話區貼上：</p>
+            <div style="position: relative;">
+                <button onclick="copyStep3Prompt()" style="
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    background: #6c5ce7;
+                    color: #fff;
+                    border: none;
+                    padding: 6px 14px;
+                    border-radius: 6px;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    z-index: 1;
+                    transition: background 0.2s;
+                " onmouseover="this.style.background='#5a4bd1'"
+                    onmouseout="this.style.background='#6c5ce7'">複製</button>
+                <div class="code-block"><pre id="step3Prompt">請把剛才抓評論的操作寫成一個 .ps1 腳本，
+檔名叫 scrape-reviews.ps1，
+讓我以後只要執行這個腳本，就能自動完成同樣的事。</pre></div>
+            </div>
+            <p style="margin-top: 12px;">AI 會自動生成 <strong>scrape-reviews.ps1</strong> 腳本檔案。以後要執行時，只要在終端機輸入：</p>
+            <div style="position: relative;">
+                <button onclick="copyRunScript()" style="
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    background: #6c5ce7;
+                    color: #fff;
+                    border: none;
+                    padding: 6px 14px;
+                    border-radius: 6px;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                    z-index: 1;
+                    transition: background 0.2s;
+                " onmouseover="this.style.background='#5a4bd1'"
+                    onmouseout="this.style.background='#6c5ce7'">複製</button>
+                <div class="code-block"><pre id="runScript">./scrape-reviews.ps1</pre></div>
+            </div>
+            <p style="margin-top: 12px;">就能自動跑完整個流程，而且完全不花費 Token。</p>
+        </div>
+    </div>
+    <script>
+        // Step 2: 互動式 ASIN 輸入
+        var asinInput = document.getElementById('asinInput');
+        var reviewPromptOutput = document.getElementById('reviewPromptOutput');
+
+        function getReviewPromptText(asin) {
+            return '請用目前開著的瀏覽器，幫我做以下操作：\n' +
+                '1. 打開這個 Amazon 產品頁面：https://www.amazon.com/dp/' + (asin || '___') + '\n' +
+                '2. 找到評論區，抓取最新的 5 則評論（評分、標題、內容、日期）\n' +
+                '3. 把結果整理成一份表格給我看';
+        }
+
+        asinInput.addEventListener('input', function () {
+            reviewPromptOutput.textContent = getReviewPromptText(this.value.trim());
+        });
+
+        function copyReviewPrompt() {
+            var text = reviewPromptOutput.textContent;
+            navigator.clipboard.writeText(text).then(function () {
+                var btn = document.querySelector('[onclick="copyReviewPrompt()"]');
+                btn.textContent = '已複製 ✓';
+                setTimeout(function () { btn.textContent = '複製'; }, 1500);
+            });
+        }
+
+        function copyStep1Prompt() {
+            var text = document.getElementById('step1Prompt').textContent;
+            navigator.clipboard.writeText(text).then(function () {
+                var btn = document.querySelector('[onclick="copyStep1Prompt()"]');
+                btn.textContent = '已複製 ✓';
+                setTimeout(function () { btn.textContent = '複製'; }, 1500);
+            });
+        }
+
+        function copyStep3Prompt() {
+            var text = document.getElementById('step3Prompt').textContent;
+            navigator.clipboard.writeText(text).then(function () {
+                var btn = document.querySelector('[onclick="copyStep3Prompt()"]');
+                btn.textContent = '已複製 ✓';
+                setTimeout(function () { btn.textContent = '複製'; }, 1500);
+            });
+        }
+
+        function copyRunScript() {
+            var text = document.getElementById('runScript').textContent;
+            navigator.clipboard.writeText(text).then(function () {
+                var btn = document.querySelector('[onclick="copyRunScript()"]');
+                btn.textContent = '已複製 ✓';
+                setTimeout(function () { btn.textContent = '複製'; }, 1500);
+            });
+        }
+    </script>
+    <script src="page-map.js"></script>
+    <script src="lightbox.js"></script>
+</body>
+</html>

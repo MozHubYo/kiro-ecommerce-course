@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill 體驗：一鍵升級 AI 的專業能力</title>
+    <link rel="stylesheet" href="shared.css">
+</head>
+<body>
+    <div class="container">
+        <span class="badge">工具體驗 2/2</span>
+        <h1>🧩 Skill：一鍵升級 AI 的專業能力</h1>
+        <p class="subtitle">不用寫程式、不用設定，裝上 Skill 就能讓 AI 變成各領域的專家</p>
+
+        <!-- Skill 是什麼 -->
+        <div class="card">
+            <h2><span class="icon">🤔</span> Skill 是什麼？</h2>
+            <p>簡單來說，Skill 就是寫給 AI 看的專案說明書，讓 AI 理解怎麼把一件事情做好，一種提煉於隱性智慧的顯性文檔。</p>
+            <div class="zone-grid" style="margin-top: 20px;">
+                <div class="zone-card">
+                    <div class="zone-label">🙌 安裝零門檻</div>
+                    <p>不用寫程式、不用改設定檔，說一句話就能裝好。</p>
+                </div>
+                <div class="zone-card">
+                    <div class="zone-label">⚡ 即裝即用</div>
+                    <p>裝完直接生效，不需要累計或者沉澱更多使用記錄。</p>
+                </div>
+                <div class="zone-card">
+                    <div class="zone-label">📐 可被監督</div>
+                    <p>Skill 是純文字檔，可以藉由人工完成監察，判斷內容。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 現場體驗：安裝 UI/UX PRO MAX -->
+        <div class="card">
+            <h2><span class="icon">🚀</span> 現場體驗：安裝 UI/UX 設計 Skill</h2>
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第一步：安裝 Skill</strong></p>
+            <p>在 Kiro 的對話區貼上以下指令：</p>
+            <div class="code-block"><pre>請幫我全局安裝 UI/UX PRO MAX 這個 Skill，
+來源：https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+讓所有專案都能使用這個設計能力。</pre></div>
+            <p style="margin-top: 16px;">安裝成功後，在左側面板的 <strong>AGENT STEERING & SKILLS</strong> 下方，Global 區域會出現 ui-ux-pro-max 這個 Skill：</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/hPHyvvrp/12-UIUX.png" style="width: 100%;" alt="安裝成功後，在 AGENT STEERING & SKILLS 的 Global 區域可以看到 ui-ux-pro-max">
+            </div>
+
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第二步：使用 Skill </strong></p>
+            <p>只要在文字中，提到Skill，AI 就會自動去讀取相關的技能，進行優化。</p>
+            <p style="margin-top: 12px;">選好選項後，複製指令貼到對話區：</p>
+
+            <div class="prompt-builder">
+                <div class="prompt-builder-options">
+                    <div class="option-group">
+                        <label class="option-label">📋 報告對象</label>
+                        <div id="audienceOptions" class="chip-group"></div>
+                    </div>
+                    <div class="option-group">
+                        <label class="option-label">🎨 設計風格</label>
+                        <div id="styleOptions" class="chip-group"></div>
+                    </div>
+                </div>
+                <div style="position: relative;">
+                    <button onclick="copyOptimizePrompt()" class="copy-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        複製
+                    </button>
+                    <div class="code-block" style="margin: 0;">
+                        <pre id="optimizePromptOutput">使用 UI/UX PRO MAX Skill，對 report.html 進行以下優化：
+
+- 這份報告要給「___」看
+- 設計風格：___
+- 加入清楚的資訊層級：標題、小標、重點數據要一眼就能看到
+- 數據部分用視覺化的方式呈現（例如卡片、標籤、色塊區分）
+- 整體排版要專業、好讀，像一份正式的商業報告
+
+直接修改 report.html，用繁體中文。</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 去哪裡找更多 Skill -->
+        <div class="card">
+            <h2><span class="icon">🔍</span> 去哪裡找更多 Skill？</h2>
+            <p>很多人會把自己做的 Skill 分享到 GitHub (開源社群，可以想像是工程師的 Thread) 上，直接去 GitHub 逛是最快的。</p>
+            <p>GitHub 上的星星數（⭐）就像點讚，星星越多代表越多人覺得好用，剛開始挑 Skill 的時候可以參考。</p>
+
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>🏢 官方出品：Anthropic Skills</strong></p>
+            <p>Anthropic 自己維護了一個 <a href="https://github.com/anthropics/skills" target="_blank">Skill 倉庫</a>，裡面有各種經過官方測試的 Skill</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/T3JSpmPP/14-Anthropics-SKILL.png" style="width: 100%;" alt="Anthropic 官方 Skills GitHub 頁面">
+            </div>
+
+            <p style="margin-top: 24px; font-size: 1.05rem;"><strong>😂 同事 Skill</strong></p>
+            <p><a href="https://github.com/titanwings/colleague-skill" target="_blank"><strong>同事 Skill</strong></a> 則是最近 GitHub 上爆紅的SKILL，他可以通過歷史文件，模擬出同事的表現。</p>
+            <div class="screenshot">
+                <img src="https://i.postimg.cc/mgsJLVBd/13-tong-shi-SKILL.png" style="width: 100%;" alt="Colleague Skill GitHub 頁面">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function makeSingleSelect(choices, containerId) {
+            var selected = '';
+            var container = document.getElementById(containerId);
+            var btns = [];
+            choices.forEach(function (item) {
+                var isObj = typeof item === 'object';
+                var label = isObj ? item.label : item;
+                var desc = isObj ? item.desc : null;
+                var value = isObj && item.value ? item.value : label;
+                var btn = document.createElement('button');
+                btn.className = 'chip';
+                if (desc) {
+                    btn.innerHTML = '<span class="chip-label">' + label + '</span><span class="chip-desc">' + desc + '</span>';
+                } else {
+                    btn.innerHTML = '<span class="chip-label">' + label + '</span>';
+                }
+                btn.addEventListener('click', function () {
+                    if (selected === value) {
+                        selected = '';
+                        btn.classList.remove('active');
+                    } else {
+                        selected = value;
+                        btns.forEach(function (b) { b.classList.remove('active'); });
+                        btn.classList.add('active');
+                    }
+                    updateOptimizePrompt();
+                });
+                btns.push(btn);
+                container.appendChild(btn);
+            });
+            return function () { return selected; };
+        }
+
+        var getAudience = makeSingleSelect(['老闆', '客戶', '投資人', '自己參考'], 'audienceOptions');
+
+        var getStyle = makeSingleSelect([
+            { label: '簡約留白', desc: 'Minimalism', value: 'Minimalism' },
+            { label: '毛玻璃透明', desc: 'Glassmorphism', value: 'Glassmorphism' },
+            { label: '方塊卡片', desc: 'Bento Grid', value: 'Bento Grid' },
+            { label: '深色質感', desc: 'Dark Mode', value: 'Dark Mode' },
+            { label: '扁平色塊', desc: 'Flat Design', value: 'Flat Design' }
+        ], 'styleOptions');
+
+        var optimizePromptOutput = document.getElementById('optimizePromptOutput');
+
+        function getOptimizePromptText(audience, style) {
+            return '使用 UI/UX PRO MAX Skill，對 report.html 進行以下優化：\n' +
+                '\n' +
+                '- 這份報告要給「' + (audience || '___') + '」看\n' +
+                '- 設計風格：' + (style || '___') + '\n' +
+                '- 加入清楚的資訊層級：標題、小標、重點數據要一眼就能看到\n' +
+                '- 數據部分用視覺化的方式呈現（例如卡片、標籤、色塊區分）\n' +
+                '- 整體排版要專業、好讀，像一份正式的商業報告\n' +
+                '\n' +
+                '直接修改 report.html，用繁體中文。';
+        }
+
+        function updateOptimizePrompt() {
+            optimizePromptOutput.textContent = getOptimizePromptText(getAudience(), getStyle());
+        }
+
+        function copyOptimizePrompt() {
+            var text = optimizePromptOutput.textContent;
+            var btn = document.querySelector('.copy-btn');
+            navigator.clipboard.writeText(text).then(function () {
+                btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>已複製';
+                btn.classList.add('copied');
+                setTimeout(function () {
+                    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>複製';
+                    btn.classList.remove('copied');
+                }, 1500);
+            });
+        }
+    </script>
+    <script src="page-map.js"></script>
+    <script src="lightbox.js"></script>
+</body>
+</html>

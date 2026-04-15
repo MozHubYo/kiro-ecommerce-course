@@ -308,6 +308,116 @@ a:hover { text-decoration: underline; }
 }
 
 
+/* Prompt Builder */
+.prompt-builder {
+    margin: 20px 0;
+    padding: 28px;
+    border: 1.5px solid #e8e3ff;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #faf9ff 0%, #fff 100%);
+}
+.prompt-builder-options {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    margin-bottom: 24px;
+}
+.option-group {}
+.option-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 0.88rem;
+    color: #2d3436;
+}
+
+/* Chip Buttons */
+.chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1.5px solid #dfe6e9;
+    border-radius: 100px;
+    background: #fff;
+    color: #2d3436;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+    white-space: nowrap;
+}
+.chip:hover {
+    border-color: #b8b0f0;
+    background: #f5f3ff;
+    box-shadow: 0 2px 8px rgba(108, 92, 231, 0.1);
+    transform: translateY(-1px);
+}
+.chip:active {
+    transform: translateY(0) scale(0.97);
+}
+.chip.active {
+    border-color: #6c5ce7;
+    background: linear-gradient(135deg, #6c5ce7, #7c6cf0);
+    color: #fff;
+    box-shadow: 0 3px 12px rgba(108, 92, 231, 0.3);
+}
+.chip.active:hover {
+    background: linear-gradient(135deg, #5a4bd1, #6c5ce7);
+    box-shadow: 0 4px 16px rgba(108, 92, 231, 0.35);
+}
+.chip-label {
+    font-weight: 500;
+}
+.chip-desc {
+    font-size: 0.72rem;
+    opacity: 0.55;
+    font-weight: 400;
+}
+.chip.active .chip-desc {
+    opacity: 0.8;
+}
+
+/* Copy Button */
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    background: rgba(108, 92, 231, 0.9);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+}
+.copy-btn:hover {
+    background: #5a4bd1;
+    box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3);
+}
+.copy-btn.copied {
+    background: #00b894;
+}
+
+@media (max-width: 768px) {
+    .prompt-builder-options {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
 /* Lightbox */
 .screenshot img { cursor: zoom-in; }
 #lightbox-overlay {

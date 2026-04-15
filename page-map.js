@@ -3,12 +3,9 @@
     { href: '01-setup-all.html', label: '環境設置' },
     { href: '02-kiro-ide-overview.html', label: 'Kiro 介面' },
     { href: '03-mcp-tavily.html', label: '搜尋工具' },
-    { href: '04-hook-translation.html', label: 'Hook' },
-    { href: '05-steering-profit-analysis.html', label: 'Steering' },
-    { href: '06-steering-vs-hook.html', label: '比較' },
-    { href: '07-yt-video-analysis.html', label: 'YT 分析' },
-    { href: '08-ai-workflow-trends.html', label: '趨勢' },
-    { href: '09-survey.html', label: '問卷' }
+    { href: '04-skill-intro.html', label: 'Skill' },
+    { href: '05-yt-video-analysis.html', label: '瀏覽器自動化' },
+    { href: '07-survey.html', label: '問卷' }
   ];
 
   var currentFile = location.pathname.split('/').pop();
