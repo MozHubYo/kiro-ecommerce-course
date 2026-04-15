@@ -2,7 +2,7 @@
   var pages = [
     { href: '01-setup-all.html', label: '環境設置' },
     { href: '02-kiro-ide-overview.html', label: 'Kiro 介面' },
-    { href: '03-mcp-tavily.html', label: 'MCP' },
+    { href: '03-mcp-tavily.html', label: '搜尋工具' },
     { href: '04-hook-translation.html', label: 'Hook' },
     { href: '05-steering-profit-analysis.html', label: 'Steering' },
     { href: '06-steering-vs-hook.html', label: '比較' },
