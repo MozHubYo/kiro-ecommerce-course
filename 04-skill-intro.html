@@ -37,9 +37,12 @@
             <h2><span class="icon">🚀</span> 現場體驗：安裝 UI/UX 設計 Skill</h2>
             <p style="margin-top: 24px; font-size: 1.05rem;"><strong>第一步：安裝 Skill</strong></p>
             <p>在 Kiro 的對話區貼上以下指令：</p>
-            <div class="code-block"><pre>請幫我全局安裝 UI/UX PRO MAX 這個 Skill，
+            <div class="code-block-wrapper">
+                <button class="copy-btn" data-copy-target="#installSkillPrompt"></button>
+                <div class="code-block"><pre id="installSkillPrompt">請幫我全局安裝 UI/UX PRO MAX 這個 Skill，
 來源：https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
 讓所有專案都能使用這個設計能力。</pre></div>
+            </div>
             <p style="margin-top: 16px;">安裝成功後，在左側面板的 <strong>AGENT STEERING & SKILLS</strong> 下方，Global 區域會出現 ui-ux-pro-max 這個 Skill：</p>
             <div class="screenshot">
                 <img src="https://i.postimg.cc/hPHyvvrp/12-UIUX.png" style="width: 100%;" alt="安裝成功後，在 AGENT STEERING & SKILLS 的 Global 區域可以看到 ui-ux-pro-max">
@@ -60,12 +63,9 @@
                         <div id="styleOptions" class="chip-group"></div>
                     </div>
                 </div>
-                <div style="position: relative;">
-                    <button onclick="copyOptimizePrompt()" class="copy-btn">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                        複製
-                    </button>
-                    <div class="code-block" style="margin: 0;">
+                <div class="code-block-wrapper">
+                    <button class="copy-btn" data-copy-target="#optimizePromptOutput"></button>
+                    <div class="code-block">
                         <pre id="optimizePromptOutput">使用 UI/UX PRO MAX Skill，對 report.html 進行以下優化：
 
 - 這份報告要給「___」看
@@ -162,20 +162,8 @@
         function updateOptimizePrompt() {
             optimizePromptOutput.textContent = getOptimizePromptText(getAudience(), getStyle());
         }
-
-        function copyOptimizePrompt() {
-            var text = optimizePromptOutput.textContent;
-            var btn = document.querySelector('.copy-btn');
-            navigator.clipboard.writeText(text).then(function () {
-                btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>已複製';
-                btn.classList.add('copied');
-                setTimeout(function () {
-                    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>複製';
-                    btn.classList.remove('copied');
-                }, 1500);
-            });
-        }
     </script>
+    <script src="copy-btn.js"></script>
     <script src="page-map.js"></script>
     <script src="lightbox.js"></script>
 </body>

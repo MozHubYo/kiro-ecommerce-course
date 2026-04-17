@@ -18,8 +18,11 @@
         <div class="card">
             <h2><span class="icon">🧪</span> 先試試看</h2>
             <p>在 Kiro 右邊的對話區輸入這個問題：</p>
-            <div class="code-block">
-                <pre>今天西雅圖降雨機率是多少？</pre>
+            <div class="code-block-wrapper">
+                <button class="copy-btn" data-copy-target="#weatherPrompt"></button>
+                <div class="code-block">
+                    <pre id="weatherPrompt">今天西雅圖降雨機率是多少？</pre>
+                </div>
             </div>
             <p style="margin-top: 12px;">它可能會說「我無法上網查詢即時資訊」，或者嘗試用內建的 Fetch 工具（一種上網的指令），拿到相對薄弱的資訊。這就是 AI 普遍遇到的問題：模型被訓練好之後，裡面的資料就凍結了，停在訓練完成的那一天。所以需要接上第三方工具，才能讓模型具備<strong>上網的能力</strong>。</p>
         </div>
@@ -46,22 +49,8 @@
             </ol>
 
             <!-- 互動式 API Key 輸入 -->
-            <div style="position: relative;">
-                <button onclick="copyConfig()" style="
-                    position: absolute;
-                    top: 8px;
-                    right: 8px;
-                    background: #6c5ce7;
-                    color: #fff;
-                    border: none;
-                    padding: 6px 14px;
-                    border-radius: 6px;
-                    font-size: 0.8rem;
-                    cursor: pointer;
-                    z-index: 1;
-                    transition: background 0.2s;
-                " onmouseover="this.style.background='#5a4bd1'"
-                    onmouseout="this.style.background='#6c5ce7'">複製</button>
+            <div class="code-block-wrapper">
+                <button class="copy-btn" data-copy-target="#configOutput"></button>
                 <div class="code-block">
                     <pre id="configOutput">{
   "mcpServers": {
@@ -158,22 +147,8 @@
                 </div>
             </div>
 
-            <div style="position: relative;">
-                <button onclick="copyPrompt()" style="
-                    position: absolute;
-                    top: 8px;
-                    right: 8px;
-                    background: #6c5ce7;
-                    color: #fff;
-                    border: none;
-                    padding: 6px 14px;
-                    border-radius: 6px;
-                    font-size: 0.8rem;
-                    cursor: pointer;
-                    z-index: 1;
-                    transition: background 0.2s;
-                " onmouseover="this.style.background='#5a4bd1'"
-                    onmouseout="this.style.background='#6c5ce7'">複製</button>
+            <div class="code-block-wrapper">
+                <button class="copy-btn" data-copy-target="#promptOutput"></button>
                 <div class="code-block">
                     <pre id="promptOutput">請幫我針對「___」這個品牌做一份完整的分析報告。
 
@@ -233,15 +208,6 @@
             configOutput.textContent = getConfigText(val || defaultKey);
         });
 
-        function copyConfig() {
-            var text = configOutput.textContent;
-            navigator.clipboard.writeText(text).then(function () {
-                var btn = document.querySelector('[onclick="copyConfig()"]');
-                btn.textContent = '已複製 ✓';
-                setTimeout(function () { btn.textContent = '複製'; }, 1500);
-            });
-        }
-
         // 互動式品牌分析提示詞
         var brandName = document.getElementById('brandName');
         var brandCategory = document.getElementById('brandCategory');
@@ -279,16 +245,8 @@
         brandName.addEventListener('input', updatePrompt);
         brandCategory.addEventListener('input', updatePrompt);
         brandMarkets.addEventListener('input', updatePrompt);
-
-        function copyPrompt() {
-            var text = promptOutput.textContent;
-            navigator.clipboard.writeText(text).then(function () {
-                var btn = document.querySelector('[onclick="copyPrompt()"]');
-                btn.textContent = '已複製 ✓';
-                setTimeout(function () { btn.textContent = '複製'; }, 1500);
-            });
-        }
     </script>
+    <script src="copy-btn.js"></script>
     <script src="page-map.js"></script>
     <script src="lightbox.js"></script>
 </body>
